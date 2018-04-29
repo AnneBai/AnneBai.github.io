@@ -6,7 +6,7 @@ title: Anne's pocket
 <h2>{{ page.title }}</h2>
 <p>Latest</p>
 <ul>
-  {% for most in site.posts %}
-  <li>{{ site.time | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+  {% for post in site.posts %}
+  <li>{{ post.time | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
