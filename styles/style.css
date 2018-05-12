@@ -59,7 +59,7 @@ header nav ul a:hover {
 article {
   background-color:rgba(187, 226, 241, .8);
   margin-top:10px;
-  padding:10px 20px;
+  padding:10px 50px;
   border:1px solid rgba(187, 226, 241, .4);
   font-family:'Microsoft yahei';
 }
@@ -73,13 +73,13 @@ article li:hover {
 }
 footer {
   background-color: rgba(0, 0, 0, 0.2);
+  bottom:5px;
+  left:0;right:0;
+  margin-top:10px;
+  padding:0px 20px;
   height:30px;
   color:#666;
   text-align: center;
-  position:absolute;
-  bottom:5px;
-  left:0;right:0;
-  padding:0px 20px;
 }
 footer p {
   font-style: italic;
@@ -90,5 +90,7 @@ div.indeximg {
   width:60%;
   margin-left: 20%;
 }
-
+div.indeximg img {
+  width:100%;
+}
 
