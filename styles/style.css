@@ -14,25 +14,59 @@ header {
   font-family: "Arial";
   font-size: 1.5em;
   border:1px solid rgba(203, 227, 174, .4);
-  padding:10px 20px;
+  padding:10px 20px 50px;
 }
 header h1 {
   background:url("../images/annehead.png") no-repeat 25% 0;
   padding-left:12%;
   text-align:center;
-  margin: 0px auto;
+  margin: 30px auto;
   margin-top: 30px;
 }
 header h1 small {
   color:#555;
   font-size: 20px;
 }
+header nav{
+  text-align: center;
+  padding-bottom:10px;
+  margin-top:20px;
+}
+header nav ul {
+  overflow: hidden;
+  list-style-type: none;
+}
+header nav ul a {
+  float:left;
+  display:block;
+  padding:6px 10px;
+  margin:5px 20px;
+  border-radius: 0 0 15px 15px;
+  border:3px dashed lightgray;
+  background-color:rgba(203, 227, 174, 0.8);
+  color:#777;
+  text-decoration: none;
+  font-family:"Arial";
+  font-size: 16px;
+  transition:.3s;
+}
+header nav ul a:hover {
+  margin-top:3px;
+  box-shadow: 3px 3px 2px #aaa;
+  background-color:rgba(241, 226, 200, .8);
+  color:#333;
+}
 article {
   background-color:rgba(187, 226, 241, .8);
   margin-top:10px;
   padding:10px 20px;
-  border:1px solid rgb(187, 226, 241, .4);
+  border:1px solid rgba(187, 226, 241, .4);
   font-family:'Microsoft yahei';
+}
+article ul.posts {
+  margin:20px auto 40px;
+  list-style-type: disc;
+  font-family:"Microsoft yahei";
 }
 article li:hover {
   background-color: rgb(187, 226, 241);
@@ -51,6 +85,10 @@ footer p {
   font-style: italic;
   margin:0;
   line-height:30px;
+}
+div.indeximg {
+  width:60%;
+  margin-left: 20%;
 }
 
 

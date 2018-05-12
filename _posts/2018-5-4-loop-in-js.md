@@ -1,0 +1,210 @@
+---
+layout:default
+title:JS随笔--循环里的弯弯绕
+date:2018-05-04
+---
+
+# JS随笔--循环里的弯弯绕
+
+关于循环中，循环条件随循环变化，和循环内函数的循环变量耦合的现象；
+## 1) 从`NodeList`想到的
+今天复习红皮书到第十章，关于`NodeList`最后又讲到因为其动态性而造成无限循环的一个故事（参见红皮书P283）。
+
+故事主角是通过标签名查询的`div`集合：
+
+```
+var divs = document.getElementsByTagName("div"),
+    i,
+    div;
+for (i=0; i < divs.length; i++) {
+    div = document.createElement("div");
+    document.body.appendChild(div);
+}
+```
+`divs`是DOM树里查询到的`NodeList`，在这里之所以说它是动态的，因为每次遇见它，都会重新对它查询一次，它的家庭状态，几口人，都是谁，都是随着DOM操作实时更新的。
+
+在这个循环中，每当i增加1，执行一次循环后`divs.length`其实也会增加1。当下一次循环开始时，重新查询`divs.length`是更新后的值，那就必然造成`i`永远不会等于或超过`divs.length`了。所以就会无限循环下去。
+
+解决办法就是在循环前把`divs.length`的初始值先查出来记在小本本（一个变量`len`）上，后面不管它怎么变我只参考小本本上记的值就可以了：
+
+```
+var divs = document.getElementsByTagName("div"),
+    i,
+    len,
+    div;
+for (i=0, len=divs.length; i < len; i++) {
+    div = document.createElement("div");
+    document.body.appendchild(div);
+}
+```
+也正是因为每次访问`NodeList`对象，都要运行一次DOM查询。而DOM操作往往是JavaScript程序中开销最大的部分。最好尽量减少DOM操作。（比如集中添加的DOM节点先用一个“云中转仓库”储存，再一次性添加。这又是另一个故事~）
+
+## 2) 循环里的函数
+上面的例子是判断条件的参照值会跟着循环发生变化的情况，所以在循环前把这个参照值记下来就好。但是如果循环里面还有一个函数，引用了`i`，这就不是那么简单了。
+
+记得之前犯过的错误，遍历一串元素给它们绑定事件处理函数（改变`className`），但一运行就发现它们的结果竟然都是一样的，Code大概如下：
+
+```
+var links = document.getElementsByTagName("a"),
+    i, 
+    len;
+for (i=0, len=links.length; i < len; i++) {
+    links[i].onclick = function () {
+        for (var j=0; j < len; J++) {
+            if (j === i) {
+                links[j].className = "current";
+            } else {
+                links[j].className = "";
+            }
+        }
+    }
+}
+```
+这里我本想，元素被点击时，对元素序列再次循环遍历(`j`), 和当前位置(`i`)一样的那个元素就是当前元素，设置`class="current"`;其他元素都设置`class="no"`;
+
+事实证明我too naive. 在我点击任意一个链接时所有的链接都被添加`class="no"`，之后再点别的也看不出有反应（其实是都是一样的结果）。在函数末尾增加一个`alert(i);`，会发现每次返回的`i`值都是3（例中`<a>`元素有3个），与`links.length`相同。所以每个`<a>`元素都被添加了`class="no"`;
+
+后来从闭包和变量的知识里理解到，在函数内部的函数，对其包含函数内的变量只能取得最后一个值，也就是说，虽然`links[i]`里的`i`是逐渐增加的，但它们的事件处理函数中引用的`i`都是最后一个`i=len`的值。
+
+比如红皮书P181的例子：
+
+```
+function createFunctions() {
+    var result = new Array();
+    for (var i=0; i < 10; i++) {
+        result[i] = function () {
+            return i;
+        }
+    }
+}
+```
+`result`是个函数数组，每一项如果运行出来得到的都是10；因为每一项的函数都只是引用了`i`而不是记录循环当次的值；那假如我在设置函数前把`i`记一下呢？
+
+```
+function createFunctions() {
+    var result = new Array();
+    for (var i=0; i < 10; i++) {
+        var num = i;
+        result[i] = function () {
+            return num;
+        }
+    }
+)
+```
+事实证明这还不行，每个函数运行后都会返回9，也就是最后一次循环的值，因为这个时候引用了`num`，`num`的最后一个值是9；
+
+那也就是说，必须让函数强制保留住当次循环里的`i`值 —— 把`i`的具体值作为返回函数的参数（而不是`i`的引用），比如像红皮书里的方案：
+
+```
+function createFunctions() {
+    var result = new Array();
+    for (var i=0; i < 10; i++) {
+        result[i] = function (num) {
+            return function () {
+                return num;
+            };
+        }(i);
+    }
+}
+```
+这里的每次循环中`i`的值传给`num`并立即执行，得到一个返回`num`的函数（这个`num`和`i`已经没有联系）。如果觉的不太清楚，《JavaScript语言精粹》P39也有一个非常相似的例子，按照它的写法上面的方案也可以改为：
+
+```
+function createFunctions() {
+    var result = new Array();
+    var helper = function (num) {
+        return function () {
+            return num;
+        };
+    };
+    for (var i=0; i < 10; i++) {
+        result[i] = helper(i);
+    }
+}   
+```
+效果相似；现在循环外创建一个辅助函数，循环时该函数会返回一个绑定了当前`i`值的函数，不会与`i`的变化混在一起。
+
+啊，这些说完，重新回到我开头那段代码：
+
+```
+var links = document.getElementsByTagName("a"),
+    i, 
+    len;
+for (i=0, len=links.length; i < len; i++) {
+    links[i].onclick = function () {
+        for (var j=0; j < len; j++) {
+            if (j === i) {
+                links[j].className = "current";
+            } else {
+                links[j].className = "";
+            }
+        }
+    }
+}
+```
+这里，我可以参照上面的做法把当次循环的`i`值复制出来传递给返回的函数：
+    
+```
+for (i=0, len=links.length; i < len; i++) {
+        links[i].onclick = function (num) {
+            return function () {
+                for (var j=0; j < len; j++) {
+                    if (j === num) {
+                        links[j].className = "current";
+                    } else {
+                        links[j].className = "no";
+                    }
+                }
+            }
+        }(i);
+    }
+```
+这里的事件处理函数中绑定的，都是复制了当次循环的`i`值的`num`，与后来的`i`无关。
+
+不过还有其他解决办法，比如把`i`作为`links[i]`的一个`index`属性保存，每次在点击函数中通过`this.index`读取；或者干脆每次点击一个链接先遍历所有链接设置`class="no"`，再把当前链接（即`this`）设置为`class="current"`就可以了。关于这些，应该后面总结This时还要再次提到。
+
+最后的两段代码：1) 设置`links[i]`的属性：
+
+```
+var links = document.getElementsByTagName("a"),
+        i, 
+        len;
+    for (i=0, len=links.length; i < len; i++) {
+        links[i].index = i;
+        links[i].onclick = function () {
+            for (var j=0; j < len; j++) {
+                if (j === this.index) {
+                    links[j].className = "current";
+                } else {
+                    links[j].className = "no";
+                }  
+            }
+        }
+    }
+```
+2) 遍历统一`no`，再重新设置当前对象：
+
+```
+var links = document.getElementsByTagName("a"),
+    i, 
+    len;
+for (i=0, len=links.length; i < len; i++) {
+    links[i].onclick = function () {
+        for (var j=0; j < len; j++) {
+            links[j].className = "no";
+        }
+        this.className = "current";
+    }
+}
+```
+
+
+总结一下：
+1) 循环条件如果是`NodeList.length`这种动态类型，最好先复制给一个变量，避免每次判断都要重新计算，一方面对性能有益，另一方面避免循环条件发生意外改变。
+
+2) 在循环中创建函数，一定要注意循环变量与函数内部之间的耦合，可以通过给对象属性传值，或通过建立闭包、辅助函数等给参数传值，把循环条件、当次循环的`i`值固定下来，解除引用，避免混淆。
+
+***
+
+
+2018-5-5
