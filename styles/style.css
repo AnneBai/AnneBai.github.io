@@ -14,7 +14,7 @@ header {
   font-family: "Arial";
   font-size: 1.5em;
   border:1px solid rgba(203, 227, 174, .4);
-  padding:10px 20px 50px;
+  padding:10px 50px 50px;
 }
 header h1 {
   background:url("../images/annehead.png") no-repeat 25% 0;
@@ -72,11 +72,11 @@ article li:hover {
   background-color: rgb(187, 226, 241);
 }
 footer {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(203, 227, 174, .8);
   bottom:5px;
   left:0;right:0;
   margin-top:10px;
-  padding:0px 20px;
+  padding:0px 50px;
   height:30px;
   color:#666;
   text-align: center;
