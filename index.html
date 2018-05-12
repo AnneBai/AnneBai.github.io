@@ -7,6 +7,6 @@ title: Anne's pocket
 <p>Latest</p>
 <ul>
   {% for post in site.posts %}
-  <li>{{ post.time | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+  <li>{{ page.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
