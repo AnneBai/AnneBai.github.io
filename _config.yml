@@ -1,4 +1,4 @@
 baseurl: /AnneBai.github.io
 name: Anne's pocket
 markdown: kramdown
-permalink: /posts/:year/:month/:day/:title
+permalink: date
