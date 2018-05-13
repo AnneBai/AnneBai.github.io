@@ -59,6 +59,7 @@ header nav ul a:hover {
 article {
   background-color:rgba(187, 226, 241, .8);
   margin-top:10px;
+  min-height: 570px;
   padding:10px 50px;
   border:1px solid rgba(187, 226, 241, .4);
   font-family:'Microsoft yahei';
@@ -67,6 +68,13 @@ article ul.posts {
   margin:20px auto 40px;
   list-style-type: disc;
   font-family:"Microsoft yahei";
+}
+article ul.posts a {
+  text-decoration: none;
+  color:#333;
+}
+article ul.posts a:hover {
+  color:#000;
 }
 article li:hover {
   background-color: rgb(187, 226, 241);
