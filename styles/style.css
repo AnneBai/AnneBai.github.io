@@ -83,15 +83,21 @@ article {
   background-color: rgb(187, 226, 241);
 }
 article blockquote {
-  background-color:#f0ffff;
-  border-left: 5px solid #a0aaaa;
-  color:#444;
+  background-color:rgb(200, 220, 220);
+  border-left: 5px solid #b0bbaa;
+  color:#555;
+  padding:1px;
+  padding-left:10px;
 }
-article .highlighter-rouge {
-  background-color: #ebebe0;
-  font-family: "Lucida Console", "Monaco", monospace;
-  padding:20px;
+article .highlighter-rouge, article .highlight code{
+  background-color: rgb(200, 220, 220);
+  padding:0 1px;
+  margin:0 1px;
+  font-family: "Courier New", Courier, monospace;
   overflow: auto;
+}
+article .highlight {
+  padding-left:10px;
 }
 footer {
   background-color: rgba(203, 227, 174, .8);
