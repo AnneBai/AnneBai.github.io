@@ -25,14 +25,13 @@ const {Surface, Text, Shape, Transform} = ReactART;
 2. **Shape**是主要用来绘图的组件，就像一支画笔，可以自定义它的笔记颜色/粗细；绘图路径通过传入`d`属性([参考MDN释义](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/d/))来定义；Shape常用属性如：
     + `d`: 绘图笔路径，可以是字符串形式也可以是Path实例；
     + `stroke`: 画笔颜色；
+    + `fill`: 填充颜色；
     + `strokeWidth`: 画笔宽度；
     + `transform`: 需传入Transform的实例，定义图形的移动/旋转等命令；
 3. **Text** 是放置文字的组件，可以直接在闭合标签中添加文字，但同样需要定义组件的坐标/字迹格式等才能正确显示；目前没有找到自动换行的方法，也不能定义宽高属性，所以使用时默认为单行；常用属性如：
     + `x`, `y`: 分别定义该文本组件的横坐标和纵坐标，代表组件左上角在画布上的位置；
-    + `strokeWidth`: 字迹粗细；
-    + `fill`: 字迹颜色；
     + `font`: 字体属性，按照“font-weight font-size font-family”定义，如`font="normal 14px Microsoft Yahei"`
-    + `transform`: 需传入Transform的实例，定义图形的移动/旋转等命令；
+    + `strokeWidth`, `stroke`, `fill`, `transform` 等属性用法与Shape相同，`stroke`指的是文字边缘颜色，`fill`指文字填充颜色，不设置`fill`属性时为空心字体。
 4. **Transform** 是一个类，例如可以通过`const transform = new Transform().rotate(90)`创建一个实例，传入shape或Text等组件中的`transform`属性，即可使其逆时针旋转90°；常用命令如：
     + `translate(x,y)`: 相对当前位置位移；
     + `scale(x,y)`: 缩放，宽度方向x倍，长度方向y倍，只传一个参数时，宽度和长度方向都扩大相同倍数；
