@@ -14,8 +14,8 @@ title: react-art 初步
 ```
 import React, { Component } from 'react';
 import ReactART from 'react-art';
-import 'art/modes/svg';
-import SVGPath from 'art/modes/svg/path'
+import 'art/modes/svg';                  // SVG模式，不引入时可能是默认canvas模式
+import SVGPath from 'art/modes/svg/path' // SVG模式下；canvas模式下可以直接使用ReactART.Path;
 
 const {Surface, Text, Shape, Transform} = ReactART;
 ```
