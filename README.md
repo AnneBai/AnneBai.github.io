@@ -6,10 +6,10 @@ Anne, 一个正在学习新知的小白，经过n次尝试终于在Github上建�
 
 欢迎交流~~[Anne's Page](https://annebai.github.io)
 ***
-+ [console--常用console技巧笔记](2018-08-09-About-Console.md)
-+ [git--Git常用命令笔记](2018-08-01-Memos-about-git.md)
-+ [React--react-art初步](2018-10-10-react-art-first-step.md)
-+ [React--Redux学习笔记](2018-08-20-Redux-Notes.md)
++ [console--常用console技巧笔记](_posts/2018-08-09-About-Console.md)
++ [git--Git常用命令笔记](_posts/2018-08-01-Memos-about-git.md)
++ [React--react-art初步](_posts/2018-10-10-react-art-first-step.md)
++ [React--Redux学习笔记](_posts/2018-08-20-Redux-Notes.md)
 + [React--文档学习笔记](_posts/2018-07-25-About-React.md)
 + [ES6--声明变量](_posts/2018-05-15-Declare-Variable.md)
 + [ES6--各数据类型的扩展(1)-字符串和正则](_posts/2018-05-17-String-and-RegExp.md)
@@ -22,7 +22,7 @@ Anne, 一个正在学习新知的小白，经过n次尝试终于在Github上建�
 + [ES6--Set和Map](_posts/2018-05-27-Set-Map.md)
 + [ES6--CommonJS](_posts/2018-05-29-CommonJS.md)
 + [ES6--Module](_posts/2018-05-29-Module.md)
-+ [JS--运算符的优先级与结合性](2018-10-8-About-Operator.md)
++ [JS--运算符的优先级与结合性](_posts/2018-10-8-About-Operator.md)
 + [js--关于this](_posts/2018-05-13-About-this.md)
 + [js--关于JSON](_posts/2018-05-13-About-JSON.md)
 + [js--关于事件](_posts/2018-05-11-About-Event.md)
