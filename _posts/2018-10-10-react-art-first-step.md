@@ -87,6 +87,6 @@ const path = new SVGPath()
     </Text>
 </Surface>
 ```
-![example](../images/art-exp.png)
+![example](/images/art-exp.png)
 
 ——————————
