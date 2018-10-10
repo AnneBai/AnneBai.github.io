@@ -42,7 +42,7 @@ const {Surface, Text, Shape, Transform} = ReactART;
     + `move(x,y)` 相对当前位置移动相对距离(x,y)；
     + `lineTo(X,Y)` 向绝对坐标(X,Y)画直线；
     + `line(x,y)` 向相对当前位置距离(x,y)的点画直线；
-    + `arc(x,y,rx,ry,LargeArcFlag)` 以相对当前位置(x,y)距离的点为目标，以(rx,ry)为长短半径，顺时针画椭圆曲线；
+    + `arc(x,y,rx,ry,LargeArcFlag)` 以相对当前位置(x,y)距离的点为目标，以(rx,ry)为长短半径，顺时针画椭圆曲线, LargeArcFlag指定画大弧(1)还是小弧(0)；
     + `arcTo(X,Y,rx,ry,LargeArcFlag)` 与arc相似，目的坐标为绝对坐标(X,Y);
     + `counterArc(x,y,rx,ry,LargeArcFlag)` arc的逆时针版本；
     + `counterArcTo(X,Y,rx,ry,LargeArcFlag)` arcTo的逆时针版本；
