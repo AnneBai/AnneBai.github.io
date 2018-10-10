@@ -88,6 +88,9 @@ article {
 }
 .post {
   margin:0 30px;
+  font-size:14px;
+  line-height:1.5;
+  color:#222;
 }
 article blockquote {
   background-color:rgb(220, 240, 250);
@@ -95,8 +98,6 @@ article blockquote {
   color:#555;
   padding:1px;
   padding-left:10px;
-  font-size:14px;
-  line-height:1.5;
 }
 article .highlighter-rouge, article .highlight code{
   background-color:  rgb(223, 248, 255);
