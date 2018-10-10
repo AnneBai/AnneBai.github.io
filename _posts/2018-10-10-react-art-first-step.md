@@ -89,4 +89,6 @@ const path = new SVGPath()
 ```
 ![example](/images/art-exp.png)
 
+[参考demo](https://github.com/AnneBai/simple-art-svg-demo)
+
 ——————————
