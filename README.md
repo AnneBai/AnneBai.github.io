@@ -6,6 +6,12 @@ Anne, 一个正在学习新知的小白，经过n次尝试终于在Github上建�
 
 欢迎交流~~[Anne's Page](https://annebai.github.io)
 ***
++ [随笔--浏览器打印部分内容](_posts/2019-2-2-print-partial.md)
++ [内存管理和垃圾收集](_posts/2019-2-2-memory-manage.md)
++ [再看对象](_posts/2019-2-2-YDKJS-object.md)
++ [再看函数和作用域](_posts/2019-2-2-YDKJS-function.md)
++ [再看数据类型](_posts/2019-2-2-YDKJS-data-type.md)
++ [再看闭包](_posts/2019-2-2-YDKJS-closure.md)
 + [console--常用console技巧笔记](_posts/2018-08-09-About-Console.md)
 + [git--Git常用命令笔记](_posts/2018-08-01-Memos-about-git.md)
 + [React--react-art初步](_posts/2018-10-10-react-art-first-step.md)
