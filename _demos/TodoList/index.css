@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* components */
+._input {
+  padding: 4px;
+  border-radius: 4px;
+  width: 30%;
+  border: 1px solid #aaa;
+}
+
+._checkbox {
+  display: inline-block;
+  margin-top: 4px;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  background: #FFF;
+  border: 1px solid #CCC;
+  font-weight: 900;
+  color: #55ca88;
+  text-align: center;
+  border-radius: 4px;
+  user-select: none;
+}
+
+.btn {
+  flex: none;
+  align-self: right;
+  padding: 0 6px;
+  margin: 4px;
+  font-size: 18px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+.btn:disabled {
+  background: #ccc !important;
+  cursor: not-allowed;
+}
+.btn.warn {
+  background: #ca6545;
+}
+.btn.normal {
+  background: #4588ca;
+  min-width: 40px;
+}
+.btn.info{
+  background: #88ca45;
+}
+.btn.error {
+  background: #ca4545;
+}
+
+/* ========== */
+
+body {
+  background-color: rgb(247, 247, 225);
+}
+.App {
+  margin: 10%;
+  padding: 40px 0  40px 90px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid lightgray;
+  border-radius: 15px;
+}
+.App-header {
+  color: darkgray;
+}
+
+.todo-item {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+}
+.todo-item:nth-of-type(even) {
+  background-color: rgba(255,255,255,.5);
+}
+.todo-item:nth-of-type(odd) {
+  background-color: transparent;
+}
+
+.finished {
+  text-decoration: line-through;
+  color: lightgray;
+}
+.input {
+  padding: 4px;
+  border-radius: 4px;
+  width: 30%;
+  border: 1px solid #aaa;
+}
+.text {
+  flex: 1;
+  margin: 4px;
+}
