@@ -20,7 +20,7 @@ yarn start
 4. “表格展示”部分(每个格子代表一个月，已度过的时间做变暗标记)；
 
 界面如下：
-![LifeBox](/images/lifebox.jpg)
+![LifeBox](/images/lifebox.png)
 
 ### NOTE:
 1. 布局采用媒体查询和flex布局，分三种情况，以适应不同屏幕大小的情况下能够展示良好；
