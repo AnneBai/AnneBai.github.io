@@ -2,10 +2,11 @@
 ## Some flowers on the road
 
 
-Anne, 一个正在学习新知的小白，经过n次尝试终于在Github上建立了一个无比简单的主页(-_-||)，暂时能放点心得文字，先用起来~~
+Anne的学习心得文字.
 
 欢迎交流~~[Anne's Page](https://annebai.github.io)
 ***
++ [TypeScript-React小demo--人生格子](_posts/2019-3-10-LifeBox-demo.md)
 + [JS--类型转换](_posts/2019-2-14-YDKJS-type-converse.md)
 + [JS--事件循环和任务队列](_posts/2019-2-13-Event-Loop.md)
 + [work--浏览器打印部分内容](_posts/2019-2-2-print-partial.md)
