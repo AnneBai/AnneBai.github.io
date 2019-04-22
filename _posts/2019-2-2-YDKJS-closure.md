@@ -15,7 +15,7 @@ title: 再看闭包
 
 闭包的形式有多种,只要是实现可以在创建它的词法作用域之外的作用域中执行的函数, 都可以观察到闭包.
 如:
-```
+```javascript
 function A() {
     var a = 1;
     function B() {
@@ -27,7 +27,7 @@ var b = A();
 b(); // 1
 ```
 或:
-```
+```javascript
 var b;
 function A() {
     var a = 2;
@@ -40,7 +40,7 @@ b(); // 2
 ```
 函数内部创建函数返回给全局变量或执行中把内部函数赋值给全局变量, 全局变量持有内部函数B的引用, 内部函数不会被销毁, 同时它携带的外部函数A的整个变量对象也不会被销毁.
 
-```
+```javascript
 function A() {
     var a = 3;
     setTimeout(function(){
@@ -55,7 +55,7 @@ A(); // (1秒后打印) 3
 
 
 ## 循环中闭包的作用
-```
+```javascript
 for (var i=1; i<=5; i++) {
 	setTimeout( function timer(){
 		console.log( i );
@@ -64,7 +64,7 @@ for (var i=1; i<=5; i++) {
 // 5个6
 ```
 使用闭包参数"固定"当前循环的变量值:
-```
+```javascript
 for (var i=1; i<=5; i++) {
 	(function(i){
 		setTimeout( function timer(){
@@ -75,7 +75,7 @@ for (var i=1; i<=5; i++) {
 // 1->5
 ```
 这里闭包的作用与let/const相似, 把变量限制在当前循环的作用域而不是在外层共享.
-```
+```javascript
 for (let i=1; i<=5; i++) {
 	setTimeout( function timer(){
 		console.log( i );
@@ -89,7 +89,7 @@ for (let i=1; i<=5; i++) {
 对外部作用域来说这些变量和方法是不存在的, 但是当执行模块函数并把返回值赋值给一个变量, 就得到了这个模块对象, 可以通过它访问到模块输出的变量和方法.
 
 这些方法拥有访问模块函数内部所有变量的能力; 同时因为它们保留了对原模块函数的作用域的引用,所以它们也是闭包;
-```
+```javascript
 function moduleA() {
     var a = 1;
     var b = 2;
@@ -111,7 +111,7 @@ module.setB(3);
 module.say(); // a + b = 4 , hello
 ```
 得到的module可以看作是一个包含模块导出的属性的对象:
-```
+```javascript
 {
     say: ƒ say()
     setB: ƒ setB(x)

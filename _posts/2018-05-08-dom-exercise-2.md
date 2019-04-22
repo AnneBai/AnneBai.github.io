@@ -21,7 +21,7 @@ title: DOM练习小记--简单的拼单词游戏
 ### HTML/CSS
 
 与拼图游戏的表格布局不同，这一次的布局使用了“`<div>`+CSS”，相比表格布局，CSS布局的优点是更灵活，更保持在所有浏览器中的一致性，并有利于优化和维护；
-```
+```html
   <div id="letterbox">
    <a href="#" class="tile t11"></a>        
    <a href="#" class="tile t12"></a>        
@@ -32,7 +32,7 @@ title: DOM练习小记--简单的拼单词游戏
 字母盘大概的布局像这样重复的4列，通过`class`的通用类名和特殊类名能方便地设置样式和定位；
 
 对于每个方块中的字母图片也是在CSS中设置的背景：
-```
+```css
 #letterbox a.tile { background: url('../images/tiles.png') ……}
 #letterbox a.la { background-position: 0px 0px; }
 #letterbox a.lb { background-position: -80px 0px; }
@@ -58,7 +58,7 @@ title: DOM练习小记--简单的拼单词游戏
 1. `addClassName`通用函数
 
    最初是只接收元素和类名两个参数，直接在原来的基础上添加，但后来发现这样会无休止地叠加下去，所以有必要把上次添加的相同功能的类名删除掉再重新添加。每次刷新字母盘，上次刷新添加的字母类名，以及点击之后添加的`disabled`类都可以删掉。所以每次添加类名前只需要保留前两个类名就可以了。我给`addClassName`增加了第三个可选参数`number`, 即添加前保留原类名的数量。
-```
+```javascript
 function addClassName(element,name,number) {
   var oldclass;
   if (typeof element.className !== "string") {
@@ -74,7 +74,7 @@ function addClassName(element,name,number) {
 }
 ```
 2. `initPage`初始化页面
-```
+```javascript
 addLoadEvent(initPage); //页面加载完成后执行
 function initPage() {
   var letterbox = document.getElementById("letterbox");
@@ -93,7 +93,7 @@ function initPage() {
 
 
 更改后
-```
+```javascript
 addLoadEvent(initPage);
 function initPage() {
   randomizeTiles();
@@ -102,7 +102,7 @@ function initPage() {
 }
 ```
 3. `randomizeTiles`生成随机字母盘
-```
+```javascript
 function randomizeTiles() {
   var frequencyTable= new Array("a", "a", "a", "a", "a", "a", "a", "a", "b", "c", "c", "c", "d", "d", "d",
   "e", "e", "e", "e", "e", "e", "e", "e", "e", "e", "e", "e", "f", "f", "g",
@@ -126,7 +126,7 @@ function randomizeTiles() {
 ```
 其中数组frequencyTable是按照每个字母在100个字母中出现的频数（“客户”已提供）直接以字面量的形式创建。这样对运行来说可能是最高效的。反而最开始我思考要用什么方法通过循环复制生成数组更像是舍近求远的做法。如果输入费劲可以借助excel快速复制再整体复制文本过来，也会很方便。
 4. `addLetter` 点击字母的事件处理
-```
+```javascript
 function addLetter() {
   var currentWord = document.getElementById("currentWord"),
       p;
@@ -147,7 +147,7 @@ function addLetter() {
 和书中不同的是，我觉得只在第一次输入字母的时候创建`<p>`子元素节点就可以了，后面都可以只在`<p>`中增加文本节点。 相对来说代码更简单一点。
 
 5. `submitWord` 点击提交
-```
+```javascript
 function submitWord() {
   var currentWord = document.getElementById("currentWord");
   //如果为空则不提交
@@ -168,7 +168,7 @@ function submitWord() {
 }
 ```
 6. `updateScore` 处理响应
-```
+```javascript
 function updateScore() {
   if (wordRequest.readyState == 4) {
     if (wordRequest.status == 0) {
@@ -216,19 +216,19 @@ function updateScore() {
 
 
 这样我可以把
-```
+```javascript
     var classArr = element.className.split(/\s+/);
     classArr.length = number;
 ```
 改成
 
-```
+```javascript
     var classArr = element.className.split(/\s+/, number);
 ```
   顺便复习下长得比较像的`splice()`方法，这是数组方法，接收的参数为(要删除的第一项位置， 要删除的项数，从该位置要插入的项……)；借此可以完成对数组任意项的删除、替换以及插入任意项；返回它删除的数组（如无则空数组）；值得注意的是，它操作的是原始数组。
 
   这样上面的代码还可以改成一步到位的：
-  ```
+  ```javascript
     var classArr = element.className.split(/\s+/);
     classArr.splice(number, 2, name); //可能还有"disabled"类名所以删除2项；
   ```

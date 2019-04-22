@@ -31,7 +31,7 @@ title: ES6随笔--基本数据类型的扩展
 分别用于头部补全和尾部补全，接收两个参数：第一个参数指定字符串最小长度，第二个参数指定用于补全的字符串；
     
 可用于补全数值位数，或者提示输入字符串格式；
-```
+```javascript
     '123456'.padStart(10, '0') // "0000123456"
     '09-12'.padStart(10, 'YYYY-MM-DD') // "YYYY-09-12"
 ```
@@ -44,7 +44,7 @@ title: ES6随笔--基本数据类型的扩展
     
 ### 标签模板
 模板字符串被用来跟在函数名后，该函数会被调用来处理该字符串；如果模板字符串里有变量，会先将模板字符串处理成多个参数，再调用函数；处理成参数时，模板字符串中没有变量替换的基本字符串会组合为一个数组作为函数的第一个参数，处理的变量则向后依次排列；
-```
+```javascript
       let a = 5;
       let b = 10;
       function tag(s, v1, v2) {
@@ -62,7 +62,7 @@ title: ES6随笔--基本数据类型的扩展
 标签模板可以用来过滤HTML字符串，防止用户输入恶意内容；
 ### String.raw
 可用于处理模板字符串，将其中的变量替换，并对斜杠进行转义，方便后面取得原始字符串；
-```
+```javascript
     console.log(String.raw`hello \n world ${a*b}`);  // hello \n world 50
     console.log`hello \n world ${a*b}`;  //  ["hello ↵ world ", "", raw: Array(2)] 50
 ```
@@ -73,7 +73,7 @@ title: ES6随笔--基本数据类型的扩展
 字符串可以使用正则表达式的方法`match()`/`search()`/`replace()`/`split()`，在实现时都调用`RegExp`的实例方法，使所有与正则相关的方法都定义在`RegExp`对象上；
 ### u修饰符
 用于正确处理四个字节的UTF-16编码；
-```
+```javascript
 /^\uD83D/u.test('\uD83D\uDC2A') // false
 ```
 使用大括号表示Unicede字符时，必须使用`u`修饰符；
@@ -96,7 +96,7 @@ title: ES6随笔--基本数据类型的扩展
 
 ### 后行断言
     `x`只有在`y`后面才匹配；
-```
+```javascript
 //只匹配美元符号后面的数字
     /(?<=\$)\d+/.exec('Benjamin Franklin is on the $100 bill')  // ["100"]
 //只匹配不在美元符号后面的数字
@@ -110,7 +110,7 @@ title: ES6随笔--基本数据类型的扩展
 `\p{Number}`可以匹配罗马数字；
 ### 具名组匹配
 可以为每一个匹配组指定一个名字；写在尖括号里，放在圆括号内开头并加`?`前缀；
-```
+```javascript
 const RE_DATE = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
 
 const matchObj = RE_DATE.exec('1999-12-31');
@@ -120,7 +120,7 @@ const day = matchObj.groups.day; // 31
 ```
 ### 解构变量赋值和替换
 具名组匹配与解构变量赋值结合可以直接为变量赋值：
-```
+```javascript
 let {groups: {one, two}} = /^(?<one>.*):(?<two>.*)$/u.exec('foo:bar');
 one  // foo
 two  // bar   
@@ -130,7 +130,7 @@ two  // bar
 在正则表达式内部引用具名组，用`\k<组名>`的写法； 
 ### `String.prototype.matchAll()`方法
 可以把所有匹配项取出，返回匹配项的遍历器，把遍历器转为数组可以使用`...`操作符或`Array.from()`方法；
-```
+```javascript
 const string = 'test1test2test3';
 
 // g 修饰符加不加都可以
@@ -144,7 +144,7 @@ for (const match of string.matchAll(regex)) {
 // ["test3", "e", "st3", "3", index: 10, input: "test1test2test3"]
 ```
 转为数组：
-```
+```javascript
 // 转为数组方法一
 [...string.matchAll(regex)]
 

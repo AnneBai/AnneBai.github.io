@@ -28,7 +28,7 @@ ES6中的箭头函数是函数的另一种更简洁的表达形式；在箭头�
 一个一个地说：
 
 1. 常见的是作为对象的方法，可以直接作为对象的方法被定义，也可以作为公共方法在全局作用域定义然后赋值给对象的一个属性，通过对象来调用：
-```
+```javascript
     var color = "blue";
     function test() {
       alert(this.color);
@@ -51,7 +51,7 @@ ES6中的箭头函数是函数的另一种更简洁的表达形式；在箭头�
 >call, apply方法都是在特定的作用域中调用函数，实际上等于设置函数体内this对象的值，能够扩充函数赖以运行的作用域，并且作用域对象不需要与方法有任何耦合关系；
 
 >bind()方法会创建一个函数的实例，其this值会被绑定到传给bind()函数的值。
-```
+```javascript
     var color = "blue";
     function test() {
       alert(this.color);
@@ -65,7 +65,7 @@ ES6中的箭头函数是函数的另一种更简洁的表达形式；在箭头�
     test.apply(obj);// red
 ```
 3. 作为事件处理程序，在事件发生时被调用，则指向发生此事件的对象：
-```
+```javascript
   <p id="p1">这是一个段落</p>
   <script>
     function test() {
@@ -80,11 +80,11 @@ ES6中的箭头函数是函数的另一种更简洁的表达形式；在箭头�
 
 ```
 或通过把函数赋值给对象的事件属性：
-```
+```javascript
     p1.onclick = test;     //[object HTMLParagraphElement]
 ```
 即使是在事件处理函数内定义和执行的函数，没有绑定对象还是全局作用域：
-```
+```javascript
 //直接用表达式定义的函数，this指向全局
     p1.onclick = function () {
       var test1 = function () {
@@ -102,7 +102,7 @@ ES6中的箭头函数是函数的另一种更简洁的表达形式；在箭头�
 ```
 
 4. 作为构造器函数，跟在new后面被调用，this指向返回的新对象：
-```
+```javascript
     var name = "Window",
         age = 100,
         say = function () {
@@ -126,7 +126,7 @@ ES6中的箭头函数是函数的另一种更简洁的表达形式；在箭头�
 
 ## 3) 特别注意
 + 数组也是一种对象，保存在数组中的函数在通过数组调用时实际上是在数组的作用域中执行，this会指向该数组；
-```
+```javascript
       var arr = [test1,"second","third"];
       function test1() {
         alert(this.length);

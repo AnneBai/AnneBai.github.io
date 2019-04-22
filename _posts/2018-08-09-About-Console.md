@@ -18,7 +18,7 @@ title: 浏览器Console常用命令
 4. 鲜明提示自定义错误消息：`console.assert()`
 5. 清除控制台的输出：`console.clear()`
 6. 返回代码中调用函数的次数：`console.count()`
-```
+```javascript
 function clickHandler(){
     console.count(`click handler called`)
 }     

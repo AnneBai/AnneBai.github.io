@@ -90,7 +90,7 @@ _____________
 + yield / yield*
 
 例如: 
-```
+```javascript
 var a = 1; // truthy
 var b = false; // falsy
 var c = "c"; // truthy

@@ -14,7 +14,7 @@ title: DOM练习小记--一个简单的Web页面游戏
 在`id="puzzleGrid"`的`div`中建立一个4row*4col的`table`，图片都放在对应的单元格中；每个单元格的id设置为"cell+行号+列号"；每个图片的`alt`属性也和图片本身显示的数字相同；点击事件注册在表格单元格上。
 
 这里贴上第一行表格的HTML代码，其他行以此为参照：
-```
+```html
    <tr>
      <td id="cell11">
       <img src="images/07.png" alt="7" height="69" width="69">
@@ -44,7 +44,7 @@ title: DOM练习小记--一个简单的Web页面游戏
 没有按照书上的来，先自己尝试写了下，顺便巩固一下DOM的知识。代码如下：
 
 1. 
-```
+```javascript
 function swapTiles(selectCell, destinationCell) {
   //不能直接用firstChild，是回车；
   var selectImage = selectCell.getElementsByTagName("img")[0];
@@ -58,7 +58,7 @@ function swapTiles(selectCell, destinationCell) {
 }
 ```
 2. 
-```
+```javascript
 // 初始化页面，找到对应表格并给每个表格绑定点击事件处理函数tileClick;
 function initPage() {
   var puzzleGrid = document.getElementById("puzzleGrid");
@@ -71,7 +71,7 @@ function initPage() {
 }
 ```
 3. 
-```
+```javascript
 function tileClick() {
   if (isEmpty(this)) {
     return false;
@@ -101,7 +101,7 @@ function tileClick() {
 }
 ```
 4. 
-```
+```javascript
 function isEmpty(cell) {
   if (!cell) return false;
   var cellimg = cell.getElementsByTagName("img")[0];
@@ -113,7 +113,7 @@ function isEmpty(cell) {
 }
 ```
 5. 
-```
+```javascript
 function getCell(posNum) {
   var cellid = "cell"+posNum;
   if (!document.getElementById(cellid)) {
@@ -124,7 +124,7 @@ function getCell(posNum) {
 }
 ```
 6. 
-```
+```javascript
 // 判断是否赢得游戏
 function isCompleted() {
   // 用数组保存每个图片的alt值
@@ -146,7 +146,7 @@ function isCompleted() {
 }
 ```
 7. 
-```
+```javascript
 //添加window.onload事件函数；
 function addLoadEvent(func) {
   var oldload = window.onload;

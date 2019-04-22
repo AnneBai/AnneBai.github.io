@@ -10,7 +10,7 @@ title: React笔记
 + 组件名应该以大写字母开头；
 + 如果要根据表达式确定元素，可以赋值给一个大写字母开头的变量：
 
-```
+```javascript
 import React from 'react';
 import { PhotoStory, VideoStory } from './stories';
 
@@ -102,7 +102,7 @@ function Story(props) {
 + ES6 class语法不会自动绑定this，推荐使用构造函数中绑定或属性初始化器语法，将this对象绑定；
 + 向事件处理程序传递参数，事件对象event要排在其他参数的最后；
 
-```
+```javascript
 <button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
 <button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
 ```
@@ -112,13 +112,13 @@ function Story(props) {
 + 传统：if判断语句
 + jsx: &&短路操作符；可以根据条件判断显示或隐藏；
 
-```
+```javascript
 return (<p>{false && "Please Login"}</p>）p标签中无内容；
 ```
 
 + 三目操作符；可以根据条件转换显示内容；
 
-```
+```javascript
 return (
     <div>
     {isLogin ? (<UserGreeting />) :
@@ -136,7 +136,7 @@ return (
 + key需要在数组的上下文中定义，不要在单项组件的内部定义；
 + key不会在props中传递
 
-```
+```javascript
 function ListItem(props) {
   return <li>{props.value}</li>
 }
@@ -156,7 +156,7 @@ function NumberList(props) {
 + `<input type="text">`, `<textarea>`, `<select>`通过传入一个`value`属性来实现对组件的控制；
 + 通过设置不同的name，区分目标对象；
 
-```
+```javascript
   handleInputChange(e) {
     const target = e.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;

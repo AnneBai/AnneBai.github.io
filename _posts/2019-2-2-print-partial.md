@@ -7,7 +7,7 @@ title: 随笔--浏览器打印部分内容
 
 ## 1. CSS3媒体查询
 打印时隐藏某些元素, 可以在CSS中写入以下代码, HTML中只需要对需要隐藏的元素设置`class="noPrint"`
-```
+```css
 @media print {
     .noPrint{ display: none; } 
 }
@@ -17,7 +17,7 @@ title: 随笔--浏览器打印部分内容
 浏览器打印的方法是`window.print()`;
 
 1. 网上找到的通过在body中置换html的方法并不好用, 还会使原先填写内容丢失和绑定事件的按钮失效;
-```
+```javascript
 const print1 = function () {
     const doc = document;
     const body = doc.body;
@@ -29,7 +29,7 @@ const print1 = function () {
 doc.querySelector("#print").addEventListener("click", print);
 ```
 2. 先把body元素深克隆, 把body替换后打印, 最后还原, 也会造成原先绑定的事件丢失;另外`innerHTML`或`outerHTML`复制的html片段, 不会包含动态特性, 比如input未指定value而手动填入值, `innerHTML`/`outerHTML`中不会体现; 所以填写的值在打印的页面会丢失;
-```
+```javascript
 const print2 = function () {
     const doc = document;
     const body = doc.body;
@@ -40,7 +40,7 @@ const print2 = function () {
 }
 ```
 3. 把body深克隆, 把要打印的元素保留在页面用于打印, 最后替换回原body, 也会造成事件丢失
-```
+```javascript
 const print3 = function () {
     const body = doc.body;
     const oldBody = body.cloneNode(true);
@@ -59,7 +59,7 @@ const print3 = function () {
 
 ### 解决办法:
 可以新建一个容器, 填入希望打印的元素(克隆)后覆盖在原网页之上用于打印, 然后再把该新元素从body移除, 这样不会对原来的页面造成影响, 也能正确反映输入框中修改的内容;
-```
+```javascript
 // 不会丢失内容, 也不会丢失事件
 const print = function () {
     const content = doc.createElement("div");

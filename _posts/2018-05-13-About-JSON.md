@@ -10,7 +10,7 @@ title: js随笔--JSON
 + JavaScript和JSON之间的互相转化可通过JSON对象的方法实现，`JSON.stringify()`和`JSON.parse()`除了第一个要转换的对象外还可以接收一个过滤器作为参数；过滤器可以是数组形式或函数形式；
 + 在过滤器中把某个属性值设置为`undefined`即为在输出结果中删除该对应属性。
 
-```
+```javascript
 sequenceDiagram
 JavaScript->>JSON: (序列化) JSON.stringify()
 JSON->>JavaScript: (解析) JSON.parse()
@@ -25,7 +25,7 @@ JSON->>JavaScript: (解析) JSON.parse()
 
 + 对于动态数据，则只需要使用`for-in`循环，对对象中的属性遍历；需要检测属性值是否是数组（创建通用`isArray()`方法）；如果是数组也需要进行`for`循环遍历，以列表形式输出；
         
-```
+```javascript
 function isArray(arg) {
     if (typeof arg == "object") {
         var criteria = arg.constructor.toString().match(/array/i);

@@ -11,7 +11,7 @@ title: react-art 初步
 4. 如果想要使用SVG模式绘图，需要添加引入：`import 'art/modes/svg'`,同时如果希望在SVG模式下使用path类(实例可作为shape的d属性)，需要引入SVGPath: `import SVGPath form 'art/modes/svg/path'`;
 
 以下以**web端**、**使用SVG模式**为例。
-```
+```javascript
 import React, { Component } from 'react';
 import ReactART from 'react-art';
 import 'art/modes/svg';                  // SVG模式，不引入时可能是默认canvas模式
@@ -50,7 +50,7 @@ const {Surface, Text, Shape, Transform} = ReactART;
     + `close()` 从当前点向当前路径起始点画闭合直线；(每次画笔通过`move`,`moveTo`移动后都可以看作是新起点)
 
 例：
-```
+```jsx
 // 在react的组件中使用
 const path = new SVGPath()
     .moveTo(200,100)

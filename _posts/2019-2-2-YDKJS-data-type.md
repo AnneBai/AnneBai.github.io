@@ -29,7 +29,7 @@ JavaScript中有一些内建对象, 均为对象的子类型, 它们是可以构
 + RegExp
 + Error; 
 
-```
+```javascript
 "str" instanceof String  // false
 new String("str1") instanceof String // true
 typeof "str" // "string"
@@ -47,7 +47,7 @@ Error对象一般在抛出异常时自动创建, 很少需要在代码中显式�
 Date只能通过构造函数来创建, 因为没有对应的字面形式;
 
 Symbol类型的数据通过Symbol函数创建, 但和其他构造函数不同, Symbol函数不能使用`new`操作符, 也没有包装的对象类型.
-```
+```javascript
 var prop = {a: Symbol(), b: Symbol()};
 var obj = {};
 obj[prop.a] = 1;
