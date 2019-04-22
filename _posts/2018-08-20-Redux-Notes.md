@@ -6,7 +6,7 @@ title: Redux笔记
 Redux提供的功能可以理解为一个状态管理器，也就是viewModel的核心，能够把与UI动态界面相关的状态或数据统一管理。通过控制viewModle也就是store的状态变化，驱动UI界面自动更新，另一方面UI界面与用户相关的所有变更，也会实时被绑定的监听函数发起对store的更新。
 
 ## createStore的简单实现：
-```
+```javascript
 const createStore = (reducer) => {
     let state;
     let listeners = [];
@@ -28,7 +28,7 @@ const createStore = (reducer) => {
 }
 ```
 ## combineReducers的简单实现
-```
+```javascript
 const combineReducers = reducers => {
     //返回一个整体的reducer函数
         return (state = {}, action) => {
@@ -52,7 +52,7 @@ const combineReducers = reducers => {
 （中间件需按照一定次序传入`applyMiddleware`中，具体根据中间件规定；）
 + `applyMiddleware`方法接收中间件序列作为参数，将它们按顺序由内而外包装在`store.dispatch`方法之外；
 *源码*：
-```
+```javascript
 export default function applyMiddleware(...middlewares) {
     return (createStore) => (reducer, preloadedState, enhancer) => {
         var store = createStore(reducer, preloadedState, enhancer);
@@ -71,7 +71,7 @@ export default function applyMiddleware(...middlewares) {
 }
 ```
 其中的compose函数：
-```
+```javascript
 export default function compose(...funcs) {
     if (funcs.length === 0) {
         return arg => arg;
@@ -90,7 +90,7 @@ export default function compose(...funcs) {
 2 操作结束--> 发出action-2-->state更新为“操作结束” --> rerender view;
 
 ## thunk中间件
-```
+```javascript
 (import {createStore, applyMiddleware} from 'redux'; import thunk from 'redux-thunk')
 const store = createStore(
     reducer,
@@ -131,7 +131,7 @@ UI组件只负责视图层，无状态，无redux的API，数据通过this.props
 
 ### bindActionCreators()
 作用： 返回一个函数，调用这个函数时会自动dispatch对应的action
-```
+```javascript
 function bindActionCreator(actionCreator, dispatch) {
     return function() {
         return dispatch(actionCreator.apply(this, arguments))

@@ -13,7 +13,7 @@ title: CSS--关于line-height
 ![normal](images/line-height-1-0.png)
 
 代码如下：
-```
+```html
     <div>
         <h2>Far out in the uncharted backwaters of the unfashionable</h2> 
         <p>end of the western spiral arm of the Galaxy lies a small unregarded yellow sun.</p>
@@ -29,7 +29,7 @@ title: CSS--关于line-height
 ## 设置`line-height`
 但是如果用不同的方式设置了`line-height`会怎样呢？
 
-```
+```css
     .div1 { line-height: 1.2; }   /* number */ 
     .div2 { line-height: 1.2em;}   /* length */ 
     .div3 { line-height: 120%; }   /* percentage */

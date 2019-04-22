@@ -9,7 +9,7 @@ title: 再看对象
 
 对象属性的访问可以有两种形式(点访问和中括号访问):
 
-```
+```javascript
 var obj = {
 a: 1,
 }
@@ -33,7 +33,7 @@ obj["a"] // 1
 
 所以`Object.assign()`方法和扩展运算符都是对对象浅拷贝. 且它们只拷贝可枚举的(enumerable)直属属性(own property), 不会拷贝继承的属性.
 
-```
+```javascript
 var obj = {a: 1, b: 2}
 var obj1 = {o: obj};
 var newObj = {...obj1};
@@ -43,7 +43,7 @@ newObj.o === obj // true
 ### 属性描述符
 EcmaScript中定义一些只有内部使用的特性来描述属性的特征，在JS中不能直接访问它们。对"属性的属性"是通过属性描述符定义的:
 
-```
+```javascript
 var obj = {
     a: 1,
 };
@@ -59,7 +59,7 @@ Object.getOwnPropertyDescriptor(obj, "a");
 + `enumerable`: 可枚举性; 为true时则代表在`for...in/of`循环或`Object.keys()`等操作中可以被访问到, 否则会在属性枚举操作中隐藏.
 + `configurable`: 可配置性; 为true则可以使用`Object.defineProperty()`方法修改它的描述符定义. 也因此,设置为false是单向操作, 无法再设置回true, 唯一还可以设置的是writable由true变为false. 为false时也无法用`delete`操作符从对象中删除这个属性.
 
-```
+```javascript
 Object.defineProperty(obj, "a", {
     value: 2,
     writable: false, 
@@ -106,7 +106,7 @@ Object.defineProperty(obj, "a", {
 
 **访问器属性**不包含数据值, 但包含一对儿getter和setter函数(非必须);访问器属性不能直接定义, 必须通过`Object.defineProperty()`来定义.
 
-```
+```javascript
 var obj = {a: 1};
 Object.defineProperty(obj, "b", {
     get: function () {
@@ -125,7 +125,7 @@ obj.a; // 3
 
 使用`Object.defineProperties()`方法可以一次定义多个属性:
 
-```
+```javascript
 var obj = {};
 Object.defineProperties(obj, {
     a: { // 数据属性
@@ -151,7 +151,7 @@ obj.a; // 3
 
 1. 防止扩展(preventExtension): 仅保留已有属性, 不能再添加新属性
 
-```
+```javascript
 Object.preventExtensions(obj);
 obj.b = 5;
 obj.b // undefined
@@ -159,7 +159,7 @@ obj.b // undefined
 
 2. 封存(seal): 相当于调用`Object.preventExtensions(..)`并把所有已有属性标记为`configurable: false`;
 
-```
+```javascript
 var obj = {b: 3};
 var o = {a: obj};
 Object.seal(o); // 封存对象o, o对象将不能再添加属性
@@ -169,7 +169,7 @@ Object.getOwnPropertyDescriptor(o, "a");
 
 3. 冻结(freeze): 相当于调用`Object.seal(..)`并把所有已有属性标记为`writable: false`;
 
-```
+```javascript
 var o1 = {a: obj}
 Object.freeze(o1) // 冻结对象o1, 不能再改变已有属性值
 Object.getOwnPropertyDescriptor(o1, "a")
@@ -181,7 +181,7 @@ Object.getOwnPropertyDescriptor(o1, "a")
 ### 枚举和迭代
 `obj.propertyIsEnumerable(propName)` 方法检查属性是否直接存在于该对象且可枚举;
 
-```
+```javascript
 var obj1 = {a: 3, b: 2};
 Object.defineProperty(
 	obj1,
@@ -199,25 +199,25 @@ obj1.propertyIsEnumerable( "b" ); // false
 
 `in`操作符包含对象及其原型链上所有属性;
 
-```
+```javascript
 "a" in obj1 && "b" in obj1 && "toString" in obj1 // true 
 ```
 
 `Object.keys(..)`返回对象上所有可枚举属性的数组;
 
-```
+```javascript
 Object.keys(obj1) // ["a"]
 ```
 
 `Object.getOwnPropertyNames(..)` 返回对象上所有属性(不论是否可枚举)的数组
 
-```
+```javascript
 Object.getOwnPropertyNames(obj1) // ["a", "b"]
 ```
 
 `for...in`循环迭代对象及其原型链上所有可枚举属性
 
-```
+```javascript
 var obj2 = Object.create(obj1);
 Object.keys(obj2)  // []
 for (var p in obj2) {

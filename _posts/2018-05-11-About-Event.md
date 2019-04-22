@@ -39,7 +39,7 @@ title: js随笔--关于事件
     使用`attachEvent()`方法添加的事件在**全局作用域**中执行，只支持事件冒泡。
 
 跨浏览器解决方案：
-```
+```javascript
 var EventUtil = {
     addHandler: function (element, type, handler) {
         if (element.addEventListener) {
@@ -71,7 +71,7 @@ var EventUtil = {
 例如绑定在`body`的事件处理函数，点击其内部的子元素，点击事件冒泡到`body`触发该函数；此时点击的目标是这个子元素，即事件对象的`target`，但`body`的事件处理函数因为是绑定在`body`上，其内部的`this`指向`body`.
 
 可以通过红皮书中的案例`EventUtil`对象实现跨浏览器增删事件处理程序及获取事件对象和目标对象。
-```
+```javascript
 var EventUtil = {
     getEvent: function (event) {
         return event? event : window.event;
@@ -85,7 +85,7 @@ var EventUtil = {
 通过使用跨浏览器方案获取当前事件对象和目标对象，也能方便地实现事件委托--不必依靠对每个目标分别指定事件处理程序，只要在最外层元素指定的事件处理程序中，指定对于不同的`target`需要执行什么动作就可以了，这样对于内存优化和性能优化都有益。
 
 一个事件委托的例子：
-```
+```javascript
 // HTML中，box2 为 body, 内含 box1, 及 box1 的子元素 box;
       document.body.onclick = function (event) {
         event = EventUtil.getEvent(event);

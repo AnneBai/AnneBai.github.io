@@ -63,7 +63,7 @@ JavaScript的任务可以分为同步和异步两种。
 
 #### 例1:
 
-```
+```javascript
 setTimeout(function fn1() {
     console.log("timeout")
     Promise.resolve().then(function fn2() {
@@ -143,7 +143,7 @@ Promise.resolve().then(function fn4() {
 
 #### 例2：
 
-```
+```javascript
 setTimeout(() => { // fn1
     console.log('fn1');
     Promise.resolve().then(res => { // fn2

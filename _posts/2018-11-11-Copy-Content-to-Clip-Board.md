@@ -12,7 +12,7 @@ JavaScript本身具有利用剪贴板功能的API，但需要是可以选择文�
 + 执行命令必须的值(如不需传值则传递`null`)
 其中利用剪贴板操作的命令分别是 `copy`, `cut`, `paste`, 使用它们对执行时当前选择的文本有效，不需要第三个参数。
 
-```
+```html
 // 如果不希望对显示的文本进行编辑，可以在`<textarea>`标签中添加`readonly`属性
 <div id="box">
       <textarea id="text" readonly>我是你要复制的值,readonly</textarea>

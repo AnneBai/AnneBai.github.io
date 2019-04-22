@@ -6,6 +6,9 @@ Anne的学习心得文字.
 
 欢迎交流~~[Anne's Page](https://annebai.github.io)
 ***
++ [Chrome--console常用命令详细版笔记](_posts/2019-04-06-Console.md)
++ [Git--在github中贡献代码和创建PR流程](_posts/2019-03-31-github-pull-request.md)
++ [JS--相等性判断-笔记](_posts/2019-03-17-equality-and-sameness.md)
 + [TypeScript-React小demo--人生格子](_posts/2019-3-10-LifeBox-demo.md)
 + [JS--类型转换](_posts/2019-2-14-YDKJS-type-converse.md)
 + [JS--事件循环和任务队列](_posts/2019-2-13-Event-Loop.md)
