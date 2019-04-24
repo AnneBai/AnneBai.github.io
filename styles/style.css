@@ -95,7 +95,7 @@ article {
   line-height:1.5;
   color:#222;
 }
-article blockquote {
+/* article blockquote {
   background-color:rgb(220, 240, 250);
   border-left: 5px solid #b0bbaa;
   color:#555;
@@ -112,7 +112,7 @@ article .highlighter-rouge, article .highlight code{
 }
 article .highlight {
   padding-left:10px;
-}
+} */
 footer {
   background-color: rgba(203, 227, 174, .8);
   margin-top:10px;
