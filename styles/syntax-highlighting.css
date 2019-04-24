@@ -6,7 +6,7 @@
     .highlight .k     { color: #a71d5d } 
     .highlight .cm    { color: #969896 } 
     .highlight .cp    { color: #969896 } 
-    .highlight .c1    { color: #969896 } 
+    .highlight .c1    { color: #969896; font-style: italic; font-family: "Microsoft yahei" } 
     .highlight .cs    { color: #969896 } 
     .highlight .gd    { color: #000; background-color: #fdd }
     .highlight .gd .x { color: #000; background-color: #faa }
