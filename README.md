@@ -4,8 +4,10 @@
 
 Anne的学习心得文字.
 
-欢迎交流~~[Anne's Page](https://annebai.github.io)
+[Anne's Page](https://annebai.github.io)
 ***
++ [JS--扩展一下使用reduce的思路](_posts/2019-4-21-reduce.md)
++ [JS--数组方法的总结笔记](_posts/2019-04-15-Array-methods.md)
 + [Chrome--console常用命令详细版笔记](_posts/2019-04-06-Console.md)
 + [Git--在github中贡献代码和创建PR流程](_posts/2019-03-31-github-pull-request.md)
 + [JS--相等性判断-笔记](_posts/2019-03-17-equality-and-sameness.md)
