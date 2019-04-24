@@ -1,3 +1,6 @@
+@import "github-markdown";
+@import "syntax-highlighting";
+
 body {
   background-color:rgb(238, 242, 241);
 }

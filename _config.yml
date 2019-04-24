@@ -1,4 +1,7 @@
 baseurl: /AnneBai.github.io
 name: Anne's pocket
-markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
+markdown: redcarpet
+highlighter: pygments
+redcarpet:
+  extensions: ["no_intra_emphasis", "tables", "autolink", "strikethrough", "fenced_code_blocks", "with_toc_data"]
