@@ -1,10 +1,5 @@
----
-
----
-@charset "utf-8";
-
-@import "github-markdown";
-@import "syntax-highlighting";
+@import "./github-markdown.css";
+@import "./syntax-highlighting.css";
 
 body {
   background-color:rgb(238, 242, 241);
