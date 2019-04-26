@@ -47,7 +47,7 @@ nav ul li {
 nav ul a {
   padding:8px 10px;
   border-radius: 4px 4px 12px 12px;
-  background-color:rgba(241, 226, 200, .8);
+  background-color:rgba(241, 226, 200, .5);
   box-shadow: 0px 0px 4px #aaa;
   color:#9c9c9c;
   text-decoration: none;
@@ -56,7 +56,7 @@ nav ul a {
   transition:.3s;
 }
 nav ul a:hover {
-  background-color:rgba(241, 226, 200, .4);
+  background-color:rgba(241, 226, 200, .8);
   color:#5c5c5c;
 }
 article {
@@ -65,6 +65,9 @@ article {
   min-height: 570px;
   border:1px solid rgba(187, 226, 241, .4);
   font-family:'Microsoft yahei';
+}
+.list {
+  margin-left: 50px;
 }
 .posts {
   padding: 30px 50px 40px;
@@ -115,7 +118,6 @@ article .highlight {
 footer {
   background-color: rgba(203, 227, 174, .8);
   margin-top:10px;
-  padding:0px 50px;
 }
 footer ul {
   width:360px;
