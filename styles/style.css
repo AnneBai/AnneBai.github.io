@@ -6,7 +6,7 @@ body {
   margin: 0 auto;
 }
 header, article, footer {
-  width:40%;
+  width:100%;
   margin: 0px auto;
   box-shadow:0px 0px 4px #999;
   border-radius:5px;
@@ -23,17 +23,17 @@ header, article, footer {
 }
 @media screen and (min-width: 768px) {
   body {
-    width:65%;
+    width:70%;
   }
 }
 @media screen and (min-width: 992px) {
   body {
-    width:50%;
+    width:55%;
   }
 }
 @media screen and (min-width: 1200px) {
   body {
-    width:40%;
+    width:45%;
   }
 }
 header {
