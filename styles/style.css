@@ -3,7 +3,6 @@
 
 body {
   background-color:rgb(238, 242, 241);
-  width: 100%;
   margin: 0 auto;
 }
 header, article, footer {
@@ -13,24 +12,28 @@ header, article, footer {
   border-radius:5px;
 }
 @media screen and (max-width: 600px) {
-  header, article, footer {
+  body {
     width:100%;
   }
 }
-
-@media screen and (max-width: 768px) {
-  header, article, footer {
-    width:70%;
+@media screen and (min-width: 600px) {
+  body {
+    width:80%;
   }
 }
-@media screen and (max-width: 1024px) {
-  header, article, footer {
-    width:55%;
+@media screen and (min-width: 768px) {
+  body {
+    width:65%;
   }
 }
-@media screen and (min-width: 1024px) {
-  header, article, footer {
-    width:42%;
+@media screen and (min-width: 992px) {
+  body {
+    width:50%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  body {
+    width:40%;
   }
 }
 header {
