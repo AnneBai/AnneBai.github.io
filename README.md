@@ -6,6 +6,7 @@ Anne的学习心得文字.
 
 [Anne's Page](https://annebai.github.io)
 ***
++ [JS-Engine--关于JS引擎优化的理解](_posts/2019-05-02-JS-engine-optimizing.md)
 + [JS--扩展一下使用reduce的思路](_posts/2019-4-21-reduce.md)
 + [JS--数组方法的总结笔记](_posts/2019-04-15-Array-methods.md)
 + [Chrome--console常用命令详细版笔记](_posts/2019-04-06-Console.md)
