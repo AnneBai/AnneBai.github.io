@@ -28,12 +28,12 @@ header, article, footer {
 }
 @media screen and (min-width: 992px) {
   body {
-    width:55%;
+    width:60%;
   }
 }
 @media screen and (min-width: 1200px) {
   body {
-    width:45%;
+    width:50%;
   }
 }
 header {
@@ -86,10 +86,10 @@ article {
   font-family:'Microsoft yahei';
 }
 .list {
-  margin-left: 50px;
+  margin-left: 40px;
 }
 .posts {
-  padding: 30px 50px 40px;
+  padding: 30px 40px 40px;
   list-style-type: disc;
   font-family:"Microsoft yahei";
 }
@@ -111,7 +111,7 @@ article {
   background-color: rgb(187, 226, 241);
 }
 .post {
-  margin:0 50px;
+  margin:0;
   font-size:16px;
   line-height:1.6;
   color:#222;

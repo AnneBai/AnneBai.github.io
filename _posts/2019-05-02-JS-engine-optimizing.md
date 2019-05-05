@@ -21,7 +21,7 @@ title: JS-Engine--关于JS引擎优化的理解
 ### JS引擎执行代码的流程
 不同JS引擎对执行和优化的一些细节上有差别，但是它们有以下通用的流程。
 
-<img src="images/JS-Engine.svg">
+<img src="/images/JS-Engine.svg">
 
 1. JS源码会先被解析器parser解析生成抽象语法树（AST, Abstract Syntax Tree）；
 2. 解释器可以在AST基础上产生字节码并执行；
@@ -29,10 +29,11 @@ title: JS-Engine--关于JS引擎优化的理解
 4. 优化是在现有代码及分析信息的基础上作出一定的推测，然后生成优化后的机器码；优化完成后, 该部分的代码就由优化后的机器码代替, 优化后产生机器码，可以直接在系统处理器中执行；
 5. 在某个节点发现优化时的特定推测是错误的，编译器也会进行“去优化”而将代码还原给解释器。
 
-代码 | 生成者 | 执行者 | 生成效率 | 执行效率 | 空间效率
----| --- | --- | --- | --- | ---
-字节码| 解释器(interpreter) | 解释器 | 高 | 低 | 高
-机器码| 编译器(optimizer) | CPU* | 低 | 高 | 低
+|代码 | 生成者 | 执行者 | 生成效率 | 执行效率 | 空间效率 |
+| ---| --- | --- | --- | --- | --- |
+| 字节码| 解释器(interpreter) | 解释器 | 高 | 低 | 高 |
+| 机器码| 编译器(optimizer) | CPU* | 低 | 高 | 低 |
+
 \*注：此处CPU是我自己的理解，原文为*bytecode needs an interpreter to run, whereas the optimized code can be executed directly by the processor*。
 
 简单说就是解释器可以从抽象语法树很快地拿到第一手字节码并执行，但是代码是未经过优化的，假如某个频繁调用的方法需要从一个对象中访问某个特定的属性，那么每一次调用都会执行完整的查询过程，效率就会显得比较低；
@@ -42,12 +43,13 @@ title: JS-Engine--关于JS引擎优化的理解
 所以这里就是启动时间-占用空间-执行效率多方面的权衡。之前的V8是采用将源码全部编译为机器码的策略，跳过字节码的步骤，牺牲了部分启动时间，可以使执行效率非常高，可是机器码占用内存也会非常大，这样给代码的缓存也带来了很大的问题。某种程度上是有一点“过度优化”了。并不是优化越多越好，而是“好钢用在刀刃上”，只对“优化代码可以显著提高运行效率”的那部分代码进行优化。也就是作者口中的“Hot Code”。
 
 ### 不同浏览器引擎的实现
-JS引擎 | interpreter | optimizer
--- | -- | --
-V8 | ignition | TurboFan
-SpiderMonkey | interpreter | Baseline + IonMonkey
-Chakra | interpreter | SimpleJIT + FullJIT
-JavaScriptCore | LLInt | Baseline + DFG + FTL
+
+| JS引擎 | interpreter | optimizer |
+| -- | -- | -- |
+| V8 | ignition | TurboFan |
+| SpiderMonkey | interpreter | Baseline + IonMonkey |
+| Chakra | interpreter | SimpleJIT + FullJIT |
+| JavaScriptCore | LLInt | Baseline + DFG + FTL |
 
 虽然它们的解释器和优化编译器看起来有不同的名字，但是所有JS引擎都具有相同的架构：parser（用于生成AST）和解析器 + 优化编译器的**管道结构**。说是管道结构是因为解析器执行字节码和优化编译器可以并行执行，当解释器把待优化的代码发送给另一个线程的编译器执行优化时，依然可以继续执行当前未优化的字节码；而优化过程完成后优化后的代码将会合流至主线程而后执行经过优化的代码。
 
@@ -71,7 +73,7 @@ JavaScriptCore | LLInt | Baseline + DFG + FTL
 
 我们建立一个图书名单，上面写了书名和它对应的位置，如果有变动就更新并且做一定标记，那就可以通过对比这个名单确认是否有过变更。采用这种方式对于需要经常来找某一本书的人来说就非常方便，他只需要记住是哪一个书名单和自己要找的书的位置，下次来只要书名单没有发生过变动，连查找书名那一步都省了，直接可以从对应位置取到他要的书。
 
-![Shape](images/Shape.png)
+![Shape](/images/Shape.png)
 
 如果比喻对象的属性值都是书而属性名是书名，**Shape**就是类似于上面所说“图书名单”的东西。Shape是一个统称，在不同的JS引擎中叫法不一，但含义相似。Shape只和属性信息（包括属性所在的内存位置和描述信息）有关，和实际对象的值之间是解耦的，所以只要两个对象的属性名称/描述信息和属性顺序都一样，那就可以共用一个Shape。
 
